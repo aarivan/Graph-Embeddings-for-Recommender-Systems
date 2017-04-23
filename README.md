@@ -24,17 +24,17 @@ It’s been shown that the resulting low dimensional embeddings, which are produ
 # Datasets
 We are provided with several movie datasets located in the data folder. This folder includes a usermovie ratings dataset, given in a training and test set, as well as other data files containing information about the movies, such as the actors, directors, and genres. Note that these data files are hardcoded into the code and read into python objects for us. 
 
-# records_to_graph
+# method: records_to_graph
 Here we will be converting the data into a heterogenous information network. The nodes of the graph are the users, movies, actors, genres, directors, and ratings. Edges a made between these entities if, for example, an actor starred in a movie, the movie is of a certain genre, or a user gave some movie a rating. 
 
 Five rating nodes should be created for every movie, as illustrated in Figure 1. For example, suppose there was a movie named “b”, there should be five nodes created: one for each possible rating. The simplest way to name these nodes is probably by append an “_i” for i from 1 to 5. 
 
 These nodes should be connected to their respective movie nodes. Note: the user nodes should not be connected to the movie nodes, rather they should be connected to movie rating nodes which in turn are connected to a movie node.  The data files needed to make this graph are already read-in and stored in convenient python objects for us. 
 
-# process
+# method: process
 We must perform the random walks using DeepWalk and the embedding using word2Vec. For the former, we just need to call the build_deepwalk_corpus function (provided in graph.py) with the arguments taken from the argparser variable a rgs ( e.g., args.walk_length). For the latter, we must call the Word2Vec function. Pass the following optional arguments: size, window, min_count=0, workers. Again, take these from the args variable.
 
-# predict_rating
+# method: predict_rating
 This function should predict the rating of a usermovie pair. Remember to use nodedict to map the user and movie IDs to their corresponding graph IDs (the id field of the node object) as this is what DeepWalk was built from. Also, be aware that the movie input argument is the movie ID not the movie rating IDs, which are the five nodes we want to compare the similarity with.
 
 # References
